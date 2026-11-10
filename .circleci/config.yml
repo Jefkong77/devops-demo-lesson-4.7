@@ -26,7 +26,7 @@ jobs:
           root: .
           paths:
             - target/*.jar
-  
+
   test:
     docker:
       - image: cimg/openjdk:21.0
@@ -48,38 +48,11 @@ jobs:
 
       - store_artifacts:
           path: target/surefire-reports
-  
-  publish:
-    docker:
-      - image: cimg/base:stable
-
-    steps:
-      - checkout
-
-      - attach_workspace:
-          at: .
-
-      - setup_remote_docker
-
-      - run:
-          name: Build Docker image
-          command: |
-            docker build -t "${DOCKER_USERNAME}/devops-demo-lesson-4.7:latest" .
-
-      - run:
-          name: Push to Docker Hub
-          command: |
-            printf '%s' "$DOCKER_TOKEN" | docker login -u "$DOCKER_USERNAME" --password-stdin
-            docker push "${DOCKER_USERNAME}/devops-demo-lesson-4.7:latest"
 
 workflows:
-  build_test_publish:
+  build_test:
     jobs:
       - build
       - test:
           requires:
             - build
-      - publish:
-          context: docker-hub
-          requires:
-            - test

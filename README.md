@@ -72,3 +72,7 @@ The `build` job uses Maven to package the Spring Boot application as a JAR and s
 - [Part 1 build and test run (`fd14d13`)](https://app.circleci.com/workflow/9c341920-8b25-4f64-88ff-4e15b445a879)
 - [Part 2 build, test, and publish checks (`0d039c7`)](https://github.com/Jefkong77/devops-demo-lesson-4.7/commit/0d039c7)
 - [Published Docker Hub image](https://hub.docker.com/r/jefkong77/devops-demo-lesson-4.7/tags)
+
+## Lesson 4.7 Assignment Infographic
+
+![Lesson 4.7 CircleCI workflow showing build, test, and Docker Hub publishing](./lesson-4.7-circleci-infographic.png)
